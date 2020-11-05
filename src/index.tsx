@@ -4,10 +4,32 @@ import ReactDOM from 'react-dom';
 interface AppProps {
     color: string
 }
+interface AppState {
+    counter: number
+}
 
-class App extends Component<AppProps> {
+
+class App extends Component<AppProps, AppState> {
+    // state = { counter: 0 } // overrides the state in constructor
+    constructor(props: AppProps) {
+        super(props)
+        this.state = { counter: 0 }
+    }
+    onIncrement = (): void => {
+        this.setState({ counter: this.state.counter + 1 })
+    }
+    onDecrement = (): void => {
+        this.setState({ counter: this.state.counter - 1 })
+    }
+
     render() {
-        return <div>Hi there {this.props.color}</div>
+        return (
+            <div>
+                <button onClick={this.onIncrement}>Increment</button>
+                <button onClick={this.onDecrement}>Increment</button>
+                {this.state.counter}
+            </div>
+        )
     }
 }
 
