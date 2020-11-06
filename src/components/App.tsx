@@ -19,8 +19,10 @@ class _App extends React.Component<AppProps> {
     }
 
     render() {
-        console.log(this.props.todos)
-        return <div><button onClick={this.onButtonClick}>Fetch</button>{this.renderList()}</div>
+        return (<div>
+            <button onClick={this.onButtonClick}>Fetch</button>
+            {this.renderList()}
+        </div>)
     }
 }
 
